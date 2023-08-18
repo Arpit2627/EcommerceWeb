@@ -1,5 +1,4 @@
 import cartModel from "../models/cartModel.js";
-import JWT from "jsonwebtoken";
 export const PostCartController = async (req, res) => {
   try {
     const { user, cartItems } = req.body; // Use user and cartItems from the request body

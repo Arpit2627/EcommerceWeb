@@ -88,7 +88,7 @@ export const loginController = async (req, res) => {
       });
     }
     //token
-    const token =  JWT.sign({ _id: user._id }, process.env.JWT_SECRET, {
+    const token = JWT.sign({ _id: user._id }, process.env.JWT_SECRET, {
       expiresIn: "7d",
     });
     res.status(200).send({
@@ -215,6 +215,40 @@ export const getOrdersController = async (req, res) => {
     });
   }
 };
+
+// //order cod
+// export const getAllCodOrderController=async(req,res)=>{
+//   try{
+//     const codorders = await orderCod.find({})
+//     .populate("buyer","name")
+//     .sort({ createdAt: "-1" });
+//     res.json(codorders);
+//   } catch (error) {
+//     console.log(error);
+//     res.status(500).send({
+//       success: false,
+//       message: "Error WHile Getting Orders",
+//       error,
+//     });
+//   }
+// }
+
+// //order cod
+// export const getCodOrderController=async(req,res)=>{
+//   try{
+//     const codorders = await orderCod.find({buyer:req.user._id})
+//     .populate("buyer","name")
+//     res.json(codorders);
+//   } catch (error) {
+//     console.log(error);
+//     res.status(500).send({
+//       success: false,
+//       message: "Error WHile Geting Orders",
+//       error,
+//     });
+//   }
+// }
+
 //orders for admin
 export const getAllOrdersController = async (req, res) => {
   try {

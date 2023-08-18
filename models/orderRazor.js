@@ -5,14 +5,27 @@ const OrderRazorSchema = new mongoose.Schema(
       type: Boolean,
       default: true,
     },
+    paymentMode: {
+      type: Boolean,
+      default: true,
+    },
     amount: {
       type: Number,
     },
     products: [],
     razorpay: {
-      orderId: String,
-      paymentId: String,
-      signature: String,
+      orderId:{
+        type:String,
+        default:"",
+      },
+      paymentId:{
+        type:String,
+        default:"",
+      },
+      signature:{
+        type:String,
+        default:"",
+      },
     },
     buyer: {
       type: mongoose.ObjectId,
@@ -21,7 +34,7 @@ const OrderRazorSchema = new mongoose.Schema(
     status: {
       type: String,
       default: "Not Process",
-      enum: ["Not Process", "Processing", "Shipped", "deliverd", "cancel"],
+      enum: ["Not Process", "Processing", "Shipped", "delivered", "cancel"],
     },
   },
   { timestamps: true }

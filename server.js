@@ -12,10 +12,10 @@ import cors from "cors";
 import path from "path";
 import { fileURLToPath } from "url";
 import { dirname } from "path";
-
+import { v4 as uuidv4 } from "uuid";
 //configure env
 dotenv.config();
-
+ 
 //databse config
 connectDB();
 
@@ -29,7 +29,7 @@ const __dirname = dirname(__filename);
 app.use(cors());
 app.use(express.json());
 app.use(morgan("dev"));
-app.use(express.static(path.join(__dirname, "./client/build")));
+// app.use(express.static(path.join(__dirname, "./client/build")));
 
 //routes
 app.use("/api/v1/auth", authRoutes);
@@ -37,6 +37,12 @@ app.use("/api/v1/category", categoryRoutes);
 app.use("/api/v1/product", productRoutes);
 app.use("/api/v1/payment", paymentRoutes);
 app.use("/api/v1/cart", cartRoute);
+
+
+app.get("/generate-uuid", (req, res) => {
+  const orderId = uuidv4();
+  res.json({ orderId });
+});
 
 // /static files
 

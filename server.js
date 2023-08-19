@@ -39,15 +39,17 @@ app.use("/api/v1/payment", paymentRoutes);
 app.use("/api/v1/cart", cartRoute);
 
 
-app.get("/generate-uuid", (req, res) => {
-  const orderId = uuidv4();
-  res.json({ orderId });
-});
 
 // /static files
 
 app.use("*", function (req, res) {
   res.sendFile(path.join(__dirname, "./client/build/index.html"));
+});
+
+
+app.get("/generate-uuid", (req, res) => {
+  const orderId = uuidv4();
+  res.json({ orderId });
 });
 
 //rest api
